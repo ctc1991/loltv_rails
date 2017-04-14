@@ -1,0 +1,57 @@
+<div class="youku">
+  <video class="ykPlayer" src=<%= @videoUrl %> poster=<%= @result["data"]["info"]["roominfo"]["pictures"]["img"]?@result["data"]["info"]["roominfo"]["pictures"]["img"]:@failedImg %> playsinline controls="controls">
+    您的浏览器不支持播放！
+  </video>
+
+  <div class="ykInfo">
+    <div class="ykTitle">
+      <%= @result["data"]["info"]["roominfo"]["name"] %>
+    </div>
+    <div class="ykCount">
+      在线人数：<%= @result["data"]["info"]["roominfo"]["person_num"].to_f >= 10000 ? format("%.1f万",@result["data"]["info"]["roominfo"]["person_num"].to_f/10000) : @result["data"]["info"]["roominfo"]["person_num"] %>
+    </div>
+    <div class="ykDesc">
+      
+    </div>
+
+
+  	<div class="ykUp">
+    	<div class="ykHead">
+     	 <%= image_tag @result["data"]["info"]["hostinfo"]["avatar"] %>
+   	 </div>
+    <div>
+      <p class="ykUpName">
+        <%= @result["data"]["info"]["hostinfo"]["name"] %>
+      </p>
+      <p class="ykPost">
+				房间号：<%= @result["data"]["info"]["roominfo"]["id"] %>
+      </p>
+    </div>
+  </div>
+
+  <div class="ykRecommend">
+    相关推荐
+  </div>
+
+  <div class="listView">
+    <table>
+      <% @videos.each do |video| %>
+      <tr>
+        <td><%= image_tag video["pictures"]["img"] %></td>
+        <td>
+          <p>
+            <%= link_to video["name"],  panda_path(video["id"]) %>
+          </p>
+          <p class="videoVV">
+            <%= video["person_num"].to_f >= 10000 ? format("%.1f万", video["person_num"].to_f/10000) : video["person_num"] %>
+            &nbsp
+            <%= video["updatetime"] %>
+          </P>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  </div>
+
+ </div>
