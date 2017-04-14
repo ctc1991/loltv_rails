@@ -1,0 +1,2 @@
+module YoukuHelper
+end
