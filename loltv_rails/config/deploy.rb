@@ -4,7 +4,8 @@ lock "3.7.2"
 set :application, "loltv"
 set :repo_url, "https://github.com/ctc1991/loltv_rails.git"
 
-set :default_env, { rvm_bin_path: '~/.rvm/bin' }
+set :default_env, { rvm_bin_path: '~/.set :deploy_to, '/home/deploy/my_app_name'rvm/bin' }
+set :deploy_to, '/var/www/loltv/'
 
 # append :linked_files, "config/database.yml", "config/secrets.yml"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", "public/system", "public/uploads"
