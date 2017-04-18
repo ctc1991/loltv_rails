@@ -10,7 +10,7 @@
 # Replace 127.0.0.1 with your server's IP address!
 
 set :stage, :production
-server '101.37.78.136', user: 'ctc', roles: %w{web app}
+server '101.37.78.136', user: 'ctc', roles: %w{app db web}
 
 # role-based syntax
 # ==================
