@@ -1,40 +1,39 @@
-<div class="youku">
-  <video class="ykPlayer" src=<%= @youkuVideoUrl %> poster=<%= @result["bigThumbnail"]?@result["bigThumbnail"]:@failedImg %> playsinline controls="controls">
+<div class="play_page">
+  <video class="player" src=<%= @youkuVideoUrl %> poster=<%= @result["bigThumbnail"]?@result["bigThumbnail"]:@failedImg %> playsinline controls="controls">
     您的浏览器不支持播放！
   </video>
 
-  <div class="ykInfo">
-    <div class="ykTitle">
+  <div class="player_info">
+    <div class="player_info_title">
       <%= @result["title"] %>
     </div>
-    <div class="ykCount">
-      播放量：<%= @result["view_count"].to_f >= 10000 ? format("%.1f万", @result["view_count"]/10000) : @result["view_count"] %>
+    <div class="player_info_subtitle">
+      播放量：<%= view_count_format(@result["view_count"]) %>
     </div>
-    <div class="ykDesc">
+    <div class="player_info_description">
       <%= @result["description"] %>
     </div>
 
-
-  	<div class="ykUp">
-    	<div class="ykHead">
+  	<div class="player_up">
+    	<div class="player_up_head">
      	 <%= image_tag @user["data"]["avatar"]["large"] %>
    	 </div>
-    <div>
-      <p class="ykUpName">
-        <%= @user["data"]["nickname"] %>
-      </p>
-      <p class="ykPost">
-        <%= @result["created"] %>
-      </p>
+     <div>
+       <p class="player_up_name">
+         <%= @user["data"]["nickname"] %>
+       </p>
+       <p class="player_up_posttime">
+         <%= @result["created"] %>
+       </p>
+      </div>
     </div>
-  </div>
 
-  <div class="ykRecommend">
-    相关推荐
-  </div>
+  <div class="player_recommend">
+    <div class="player_recommend_text">
+      相关推荐
+    </div>
 
-  <div class="listView">
-    <table>
+    <table class="player_recommend_table">
       <% @videos.each do |video| %>
       <tr>
         <td><%= image_tag video["thumburl"] %></td>
@@ -42,8 +41,8 @@
           <p>
             <%= link_to video["title"],  youku_path(video["videoid"]) %>
           </p>
-          <p class="videoVV">
-            <%= video["total_vv"].to_f >= 10000 ? format("%.1f万", video["total_vv"]/10000) : video["total_vv"] %>
+          <p class="player_recommend_table_count">
+            <%= view_count_format(video["total_vv"]) %>
             &nbsp
             <%= video["createtime"] %>
           </P>
@@ -51,7 +50,6 @@
       </tr>
       <% end %>
     </table>
-  </div>
-  </div>
 
+  </div>
 </div>

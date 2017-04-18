@@ -7,91 +7,89 @@
     padding:0;
 }
 
-.ykPlayer {
+.player {
   width: 100%;
   height: 100%;
-  // border-bottom: 0.5px solid black;
-  // border-top: 0.5px solid black;
 }
 
-.ykInfo {
+.player_info {
   padding: 8px;
 }
 
-.ykTitle {
+.player_title {
   font-size: 18px;
 }
 
-.ykCount {
+.player_subtitle {
   font-size: 14px;
   padding-top: 8px;
   color: gray;
 }
 
-.ykDesc {
+.player_description {
   font-size: 14px;
   padding-top: 8px;
   color: gray;
 }
 
-.ykHead img {
+.player_up_head img {
   width: 40px;
   height: 40px;
   border-radius: 20px;
   border: 0.1px solid gray;
 }
 
-.ykUp {
+.player_up {
   border-bottom: 0.5px solid gray;
   border-top: 0.5px solid gray;
   padding-top: 8px;
   margin-top: 16px;
 }
 
-.ykHead {
+.player_up_head {
   display: inline-block;
 }
 
-.ykUp div:nth-last-of-type(1) {
+.player_up div:nth-last-of-type(1) {
   display: inline-block;
 }
 
-.ykUpName {
+.player_up_name {
   font-size: 18px;
 }
 
-.ykPost {
+.player_up_posttime {
   font-size: 14px;
   color: gray;
 }
 
-.ykRecommend {
+.player_recommend_text {
   font-size: 14px;
   margin-top: 8px;
   margin-bottom: 8px;
 }
 
-.listView {
+.player_recommend_table {
   border: 1px;
 }
 
-.listView a {
+.player_recommend_table a {
   text-decoration: none;
   color: black;
   font-size: 14px;
 }
 
-.listView td {
+.player_recommend_table td {
   position: relative;
   vertical-align: top;
   font-size: 10px;
 }
 
-.videoVV {
+.player_recommend_table_count {
   position: absolute;
   bottom: 0;
 }
 
-.listView img {
+.player_recommend_table img {
   height: 80px;
 }

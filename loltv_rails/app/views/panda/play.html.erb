@@ -1,57 +1,56 @@
-<div class="youku">
-  <video class="ykPlayer" src=<%= @videoUrl %> poster=<%= @result["data"]["info"]["roominfo"]["pictures"]["img"]?@result["data"]["info"]["roominfo"]["pictures"]["img"]:@failedImg %> playsinline controls="controls">
-    您的浏览器不支持播放！
-  </video>
+ <div class="play_page">
+   <video class="player" src=<%= @videoUrl %> poster=<%= @result["data"]["info"]["roominfo"]["pictures"]["img"]?@result["data"]["info"]["roominfo"]["pictures"]["img"]:@failedImg %> playsinline controls="controls">
+     您的浏览器不支持播放！
+   </video>
 
-  <div class="ykInfo">
-    <div class="ykTitle">
-      <%= @result["data"]["info"]["roominfo"]["name"] %>
-    </div>
-    <div class="ykCount">
-      在线人数：<%= @result["data"]["info"]["roominfo"]["person_num"].to_f >= 10000 ? format("%.1f万",@result["data"]["info"]["roominfo"]["person_num"].to_f/10000) : @result["data"]["info"]["roominfo"]["person_num"] %>
-    </div>
-    <div class="ykDesc">
-      
-    </div>
+   <div class="player_info">
+     <div class="player_info_title">
+       <%= @result["data"]["info"]["roominfo"]["name"] %>
+     </div>
+     <div class="player_info_subtitle">
+       在线人数：<%= view_count_format(@result["data"]["info"]["roominfo"]["person_num"]) %>
+     </div>
+     <div class="player_info_description">
 
+     </div>
+     </div>
+   	<div class="player_up">
+     	<div class="player_up_head">
+      	 <%= image_tag @result["data"]["info"]["hostinfo"]["avatar"] %>
+    	 </div>
+      <div>
+        <p class="player_up_name">
+          <%= @result["data"]["info"]["hostinfo"]["name"] %>
+        </p>
+        <p class="player_up_posttime">
+          房间号：<%= @result["data"]["info"]["roominfo"]["id"] %>
+        </p>
+       </div>
+     </div>
 
-  	<div class="ykUp">
-    	<div class="ykHead">
-     	 <%= image_tag @result["data"]["info"]["hostinfo"]["avatar"] %>
-   	 </div>
-    <div>
-      <p class="ykUpName">
-        <%= @result["data"]["info"]["hostinfo"]["name"] %>
-      </p>
-      <p class="ykPost">
-				房间号：<%= @result["data"]["info"]["roominfo"]["id"] %>
-      </p>
-    </div>
-  </div>
+   <div class="player_recommend">
+     <div class="player_recommend_text">
+       相关推荐
+     </div>
 
-  <div class="ykRecommend">
-    相关推荐
-  </div>
+     <table class="player_recommend_table">
+       <% @videos.each do |video| %>
+       <tr>
+         <td><%= image_tag video["pictures"]["img"] %></td>
+         <td>
+           <p>
+             <%= link_to video["name"],  panda_path(video["id"]) %>
+           </p>
+           <p class="player_recommend_table_count">
+             <%= view_count_format(video["person_num"]) %>
+             &nbsp
+             <%= video["updatetime"] %>
+           </P>
+         </td>
+       </tr>
+       <% end %>
+     </table>
 
-  <div class="listView">
-    <table>
-      <% @videos.each do |video| %>
-      <tr>
-        <td><%= image_tag video["pictures"]["img"] %></td>
-        <td>
-          <p>
-            <%= link_to video["name"],  panda_path(video["id"]) %>
-          </p>
-          <p class="videoVV">
-            <%= video["person_num"].to_f >= 10000 ? format("%.1f万", video["person_num"].to_f/10000) : video["person_num"] %>
-            &nbsp
-            <%= video["updatetime"] %>
-          </P>
-        </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-  </div>
-
+   </div>
+ </div>
  </div>
