@@ -3,12 +3,11 @@ require 'net/https'
 require 'json'
 
 class ApplicationController < ActionController::Base
-	
+
   protect_from_forgery with: :exception
 
   def get(uri)
     uri = URI(uri)
-
     # Create client
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
